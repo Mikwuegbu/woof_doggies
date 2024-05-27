@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { vector1, woofprint } from '../assets/assets';
 
 const Navbar = () => {
@@ -13,10 +13,37 @@ const Navbar = () => {
 					alt={woofprint}
 					className="absolute w-48 h-24 top-12 -left-20"
 				/>
-				<div className="space-x-10 font-semibold text-4xl text-center py-10 font-baloo text-[#BC6A4D]">
-					<Link className="">Home</Link>
-					<Link>dogs</Link>
-					<Link>Contact us</Link>
+				<div className="space-x-14 font-semibold text-3xl text-center py-10 font-baloo text-[#BC6A4D]">
+					<NavLink
+						to="/"
+						className={({ isActive }) =>
+							isActive
+								? 'bg-[#BC6A4D] text-white px-8 rounded-full'
+								: 'bg-white'
+						}
+					>
+						Home
+					</NavLink>
+					<NavLink
+						to="/dogs"
+						className={({ isActive }) =>
+							isActive
+								? 'bg-[#BC6A4D] text-white px-8 rounded-full'
+								: 'bg-white'
+						}
+					>
+						dogs
+					</NavLink>
+					<NavLink
+						to="contacts"
+						className={({ isActive }) =>
+							isActive
+								? 'bg-[#BC6A4D] text-white px-8 rounded-full'
+								: 'bg-white'
+						}
+					>
+						Contact us
+					</NavLink>
 				</div>
 			</div>
 		</>
