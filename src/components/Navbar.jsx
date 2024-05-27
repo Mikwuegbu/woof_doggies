@@ -13,7 +13,7 @@ const Navbar = () => {
 					alt={woofprint}
 					className="absolute w-48 h-24 top-12 -left-20"
 				/>
-				<div className="space-x-14 font-semibold text-3xl text-center py-10 font-baloo text-[#BC6A4D]">
+				<div className="space-x-14 font-semibold text-3xl text-center py-10 font-baloo text-[#BC6A4D] text-nowrap">
 					<NavLink
 						to="/"
 						className={({ isActive }) =>
