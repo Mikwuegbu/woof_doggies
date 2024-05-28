@@ -1,8 +1,8 @@
-import { searchicon, woofBtn } from '../assets/assets';
+import { searchicon, woofBtn, dog1, dog2, dog3 } from '../assets/assets';
 
 const Dogs = () => (
-	<div className="flex relative justify-center">
-		<div className="absolute bottom-36 flex justify-center items-center">
+	<div className=" flex relative justify-center">
+		<div className="absolute -top-40 flex justify-center items-center">
 			<div className="flex items-center bg-[#FCF8F6] px-3 py-3 pl-5 rounded-full">
 				<img src={searchicon} alt={searchicon} className="w-4 h-4 mb-1" />
 				<input
@@ -18,7 +18,28 @@ const Dogs = () => (
 				</button>
 			</div>
 		</div>
-		<div>the tiles</div>
+		<div className="pb-20">
+			<div className="grid grid-cols-3 gap-10 -p">
+				<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
+					<img src={dog1} alt={dog1} className="w-48 h-56" />
+				</div>
+				<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
+					<img src={dog2} alt={dog2} className="w-48 h-56" />
+				</div>
+				<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
+					<img src={dog3} alt={dog3} className="w-48 h-56" />
+				</div>
+				<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
+					<img src={dog1} alt={dog1} className="w-48 h-56" />
+				</div>
+				<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
+					<img src={dog2} alt={dog2} className="w-48 h-56" />
+				</div>
+				<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
+					<img src={dog3} alt={dog3} className="w-48 h-56" />
+				</div>
+			</div>
+		</div>
 	</div>
 );
 export default Dogs;
