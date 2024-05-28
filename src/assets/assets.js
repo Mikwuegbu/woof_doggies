@@ -8,6 +8,8 @@ import dog2 from './dog2.png';
 import dog3 from './dog3.png';
 import arrowLeft from './arrowLeft.png';
 import arrowRight from './arrowRight.png';
+import searchicon from './searchicon.png';
+import woofBtn from './woofBtn.png';
 
 export {
 	vector1,
@@ -20,4 +22,6 @@ export {
 	dog3,
 	arrowLeft,
 	arrowRight,
+	searchicon,
+	woofBtn,
 };
