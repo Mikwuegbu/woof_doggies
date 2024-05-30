@@ -9,15 +9,28 @@ import {
 	woofsingle,
 } from '../assets/assets';
 import useFetch from '../components/useFetch';
+import { useState } from 'react';
 
 const Home = () => {
-	// const dogApi =
-	// 	'live_iJujW4891lv2NeFPE232WWtq2JaQr9tDywCKjYv9ngAQJwz8ibiNrkOOgcdj5Jbg';
-	// const { data, loading, error } = useFetch(dogApi);
+	const dogApi = 'https://api.thedogapi.com/v1/images/search?limit=10';
+	const { data, loading, error } = useFetch(dogApi);
+	const [currentIndex, setCurrentIndex] = useState(0);
+
+	//Function for the next and Previous buttons
+	const goToPrevSlide = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex === 0 ? data.length - 3 : prevIndex - 1
+		);
+	};
+
+	const goToNextSlide = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex === data.length - 3 ? 0 : prevIndex + 1
+		);
+	};
 
 	return (
 		<div className="">
-			{/* {data.map((data) => !loading && console.log(data.id))} */}
 			<div className="relative">
 				<div className="absolute left-28 -top-60 text-nowrap">
 					<h1 className="font-baloo font-semibold text-5xl text-white">
@@ -35,21 +48,40 @@ const Home = () => {
 			</div>
 			<div className="flex justify-between pt-36 relative">
 				<div className="absolute left-16 bottom-3">
-					<div className="flex space-x-8">
-						<button>
-							<img src={arrowLeft} alt={arrowLeft} className="w-10 h-8" />
+					<div className="flex space-x-8 items-center">
+						<button className="">
+							<img
+								src={arrowLeft}
+								alt={arrowLeft}
+								className="w-10 h-8"
+								onClick={goToPrevSlide}
+							/>
 						</button>
-						<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
-							<img src={dog1} alt={dog1} className="w-48 h-56" />
-						</div>
-						<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
-							<img src={dog2} alt={dog2} className="w-48 h-56" />
-						</div>
-						<div className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]">
-							<img src={dog3} alt={dog3} className="w-48 h-56" />
-						</div>
-						<button>
-							<img src={arrowRight} alt={arrowRight} className="w-10 h-8" />
+						{loading ? (
+							<div className="text-center">Loading</div>
+						) : (
+							<div className="flex space-x-8">
+								{data.slice(currentIndex, currentIndex + 3).map((dog) => (
+									<div
+										key={dog.id}
+										className="border-dashed border-2 rounded-3xl p-2 border-[#e4c3bb]"
+									>
+										<img
+											src={dog.url}
+											alt={dog.url}
+											className="w-48 h-56 rounded-2xl"
+										/>
+									</div>
+								))}
+							</div>
+						)}
+						<button className="">
+							<img
+								src={arrowRight}
+								alt={arrowRight}
+								className="w-10 h-8"
+								onClick={goToNextSlide}
+							/>
 						</button>
 					</div>
 				</div>
