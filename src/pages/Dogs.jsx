@@ -1,4 +1,4 @@
-import { searchicon, woofBtn, dog1, dog2, dog3 } from '../assets/assets';
+import { searchicon, woofBtn } from '../assets/assets';
 import useFetch from '../components/useFetch';
 
 const Dogs = () => {
