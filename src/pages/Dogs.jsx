@@ -1,9 +1,25 @@
 import { searchicon, woofBtn } from '../assets/assets';
 import useFetch from '../components/useFetch';
+import { useState, useEffect } from 'react';
 
 const Dogs = () => {
 	const dogApi = 'https://api.thedogapi.com/v1/images/search?limit=10';
-	const { data, loading, error } = useFetch(dogApi);
+	const { data, loading } = useFetch(dogApi);
+	const [searchValue, setsearchValue] = useState('');
+	const [filteredData, setfilteredData] = useState([]);
+
+	const inputHandler = (e) => {
+		setsearchValue(e.target.value);
+	};
+
+	//for re-rendering at change of search value
+	useEffect(() => {
+		setfilteredData(
+			data.filter((item) => {
+				return item.url.toLowerCase().includes(searchValue.toLowerCase());
+			})
+		);
+	}, [data, searchValue]);
 
 	return (
 		<div className=" flex relative justify-center">
@@ -14,6 +30,8 @@ const Dogs = () => {
 						type="text"
 						className="placeholder:font-baloo placeholder:text-3xl placeholder:text-[#BC6A4D] px-3.5 py-5 w-72 outline-none bg-transparent"
 						placeholder="Search Dog bread"
+						value={searchValue}
+						onChange={inputHandler}
 					/>
 					<button className="bg-[#BC6A4D] flex items-center rounded-full px-8">
 						<img src={woofBtn} alt={woofBtn} className="w-10 h-10 " />
@@ -28,16 +46,18 @@ const Dogs = () => {
 					<div className="font-baloo text-xl text-[#BC6A4D]">
 						Loading Dogs...{' '}
 					</div>
+				) : filteredData.length === 0 ? (
+					<div className="font-baloo text-xl text-[#BC6A4D]">No Dogs Found</div>
 				) : (
 					<div className="grid grid-cols-3 gap-10 -p">
-						{data.map((dog) => (
+						{filteredData.map((dog) => (
 							<div
 								className="border-dashed border-2 rounded-3xl p-2 border-[#E4C3B8]"
 								key={dog.id}
 							>
 								<img
 									src={dog.url}
-									alt={dog.url}
+									alt={dog.id}
 									className="w-48 h-56 rounded-xl"
 								/>
 							</div>
