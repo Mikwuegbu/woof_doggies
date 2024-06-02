@@ -2,9 +2,6 @@ import {
 	arrowLeft,
 	arrowRight,
 	bulldog,
-	dog1,
-	dog2,
-	dog3,
 	vectorLine,
 	woofsingle,
 } from '../assets/assets';
